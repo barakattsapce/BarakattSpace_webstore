@@ -1,0 +1,16 @@
+BarakattSpace Webstore – Software Requirements Specification (SRS)
+1. Project Overview
+BarakattSpace is a software development company providing software development services. The
+BKWebstore is an online platform for selling products and building brand presence globally.
+2. Functional Requirements
+User registration/login, product browsing, cart, checkout, payment integration, order tracking, admin
+panel.
+3. Non-Functional Requirements
+Fast performance, strong security, mobile responsiveness, scalability, multilingual support.
+4. User Stories
+Customers can browse, register, purchase, and track orders. Admin manages products and orders.
+
+5. Entities
+User, Product, ProductCategory, Order, Sale, Feedback
+6. Constraints
+Limited budget, 1-month timeline, regional payment 
