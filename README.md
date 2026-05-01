@@ -111,8 +111,8 @@ Contributions, suggestions, and feedback are welcome.
 
 ## 📬 Contact
 
-- GitHub: https://github.com/your-username  
-- LinkedIn: https://linkedin.com/in/your-profile  
+- GitHub: https://github.com/Barakattspace  
+- LinkedIn: https://linkedin.com/in/bara-kaatt
 
 ---
 
