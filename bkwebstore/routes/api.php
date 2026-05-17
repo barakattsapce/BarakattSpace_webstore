@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProductCategoryController;
 use App\Http\Controllers\Api\ProductController;
-
+use App\Http\Controllers\API\AboutController;
+use App\Http\Controllers\API\Admin\AboutAdminController;
 
 Route::prefix('v1')->group(function () {
 
@@ -44,5 +45,22 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
 
     Route::apiResource('categories', ProductCategoryController::class)
         ->except(['index', 'show']);
+
+});
+
+
+Route::get('/about', [AboutController::class, 'index']);
+// Admin Route Group
+Route::prefix('admin')->group(function () {
+
+    Route::get('/about', [AboutAdminController::class, 'index']);
+
+    Route::put('/about/hero', [AboutAdminController::class, 'updateHero']);
+
+    Route::post('/about/cards', [AboutAdminController::class, 'storeCard']);
+
+    Route::put('/about/cards/{id}', [AboutAdminController::class, 'updateCard']);
+
+    Route::delete('/about/cards/{id}', [AboutAdminController::class, 'deleteCard']);
 
 });
