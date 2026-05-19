@@ -13,6 +13,9 @@ Route::prefix('v1')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
 
+    // About
+    Route::get('/about', [AboutController::class, 'index']);
+
     Route::middleware('auth:sanctum')->group(function () {
 
         Route::post('/logout', [AuthController::class, 'logout']);
@@ -49,8 +52,7 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
 });
 
 
-Route::get('/about', [AboutController::class, 'index']);
-// Admin Route Group
+// Admin Route Group``
 Route::prefix('admin')->group(function () {
 
     Route::get('/about', [AboutAdminController::class, 'index']);
