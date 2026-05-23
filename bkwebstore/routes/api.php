@@ -7,14 +7,20 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\API\AboutController;
 use App\Http\Controllers\API\Admin\AboutAdminController;
 
-Route::prefix('v1')->group(function () {
+Route::prefix('v1')->group(function () {    
 
     // Auth
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
 
     // About
-    Route::get('/about', [AboutController::class, 'index']);
+    // Route::get('/about', [AboutController::class, 'index']);
+    Route::get('/about', function () {
+    return response()->json([
+        'success' => true,
+        'message' => 'API works'
+    ]);
+});
 
     Route::middleware('auth:sanctum')->group(function () {
 
