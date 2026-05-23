@@ -13,18 +13,24 @@ class AboutController extends Controller
     public function index()
     {
         return response()->json([
+            'success' => true,
 
-            'hero_section' => AboutSection::first(),
+            'data' => [
 
-            'cards' => AboutCard::all(),
+                'hero_section' => AboutSection::first(),
 
-            'why_choose_us' => [
-                'title' => 'Why Choose Us?',
-                'points' => AboutFeature::pluck('title')
+                'cards' => AboutCard::all(),
+
+                'why_choose_us' => [
+                    'title' => 'Why Choose Us?',
+                    'points' => AboutFeature::pluck('title')
+                ],
+
+                'statistics' => AboutStatistic::all()
+
             ],
 
-            'statistics' => AboutStatistic::all()
-
-        ]);
+            'message' => 'About page data fetched successfully'
+        ], 200);
     }
 }
