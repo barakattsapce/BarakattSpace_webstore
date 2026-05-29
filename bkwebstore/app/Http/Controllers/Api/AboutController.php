@@ -1,36 +1,41 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\AboutCard;
-use App\Models\AboutFeature;
-use App\Models\AboutSection;
-use App\Models\AboutStatistic;
+use App\Models\AboutHeroSection;
+use App\Models\Statistic;
+use App\Models\WhyChooseUs;
 
 class AboutController extends Controller
 {
     public function index()
     {
+        $hero = AboutHeroSection::first();
+
+        $cards = AboutCard::all();
+
+        $whyChoose = WhyChooseUs::with('points')->first();
+
+        $statistics = Statistic::all();
+
         return response()->json([
-            'success' => true,
-
-            'data' => [
-
-                'hero_section' => AboutSection::first(),
-
-                'cards' => AboutCard::all(),
-
-                'why_choose_us' => [
-                    'title' => 'Why Choose Us?',
-                    'points' => AboutFeature::pluck('title')
-                ],
-
-                'statistics' => AboutStatistic::all()
-
+            'hero_section' => [
+                'description' => $hero?->description,
+                'image' => $hero?->image,
             ],
 
-            'message' => 'About page data fetched successfully'
-        ], 200);
+            'cards' => $cards,
+
+            'why_choose_us' => [
+                'title' => $whyChoose?->title,
+
+                'points' => $whyChoose
+                    ? $whyChoose->points->pluck('point')
+                    : [],
+            ],
+
+            'statistics' => $statistics,
+        ]);
     }
 }
