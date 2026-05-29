@@ -10,8 +10,7 @@ use App\Models\WhyChooseUs;
 class AboutController extends Controller
 {
     public function index()
-    {
-        $hero = AboutHeroSection::first();
+    {$hero = AboutHeroSection::first();
 
         $cards = AboutCard::all();
 
